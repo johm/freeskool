@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @course.name %>
+</p>
+
+<p>
+  <b>Short description:</b>
+  <%= @course.short_description %>
+</p>
+
+<p>
+  <b>Long description:</b>
+  <%= @course.long_description %>
+</p>
+
+<p>
+  <b>Is approved:</b>
+  <%= @course.is_approved %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

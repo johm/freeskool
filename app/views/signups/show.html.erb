@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Course:</b>
+  <%= @signup.course %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @signup.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_signup_path(@signup) %> |
+<%= link_to 'Back', signups_path %>

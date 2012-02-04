@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  short_description: MyText
+  long_description: MyText
+  is_approved: false
+
+two:
+  name: MyString
+  short_description: MyText
+  long_description: MyText
+  is_approved: false

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  course: 
+  session_date: 2012-02-02
+  session_start: 2012-02-02 07:57:18
+  session_end: 2012-02-02 07:57:18
+  description: MyText
+  location: 
+
+two:
+  course: 
+  session_date: 2012-02-02
+  session_start: 2012-02-02 07:57:18
+  session_end: 2012-02-02 07:57:18
+  description: MyText
+  location: 
