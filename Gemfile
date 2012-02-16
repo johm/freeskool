@@ -29,6 +29,7 @@ group :development, :test do
   gem 'cucumber-rails'
 end
 
+gem 'squeel'
 gem 'cancan'
 
 # Use unicorn as the web server
