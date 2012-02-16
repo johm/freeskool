@@ -2,7 +2,7 @@ class Session < ActiveRecord::Base
   belongs_to :course
   belongs_to :location
   
-  validates :times_on_given_day
+  validate :times_on_given_day
   
   
   
