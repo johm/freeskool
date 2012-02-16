@@ -22,6 +22,15 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
+group :development, :test do
+  gem 'nifty-generators'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'cucumber-rails'
+end
+
+gem 'cancan'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
