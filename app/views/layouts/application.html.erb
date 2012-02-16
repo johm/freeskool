@@ -7,11 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<ul class="hmenu">
-  <%= render 'devise/menu/registration_items' %>
-  <%= render 'devise/menu/login_items' %>
-</ul>
-<%= yield %>
+
+<div class="navbar ">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <div class="span12">
+	<a href="/" class="brand"><%= image_tag "bfs-logo-grey.png", {:width=>'200px'} %></a> 
+	<ul class="hmenu nav">
+	<%= render 'devise/menu/registration_items' %>
+	<%= render 'devise/menu/login_items' %>
+	</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>
