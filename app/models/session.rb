@@ -1,4 +1,7 @@
 class Session < ActiveRecord::Base
+  
+  attr_accessible :session_start, :session_end, :course_id, :location_id
+  
   belongs_to :course
   belongs_to :location
   
