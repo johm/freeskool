@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   
   has_many :signups
-  has_many :courses, :through => :signups
+  has_many :courses
+  has_many :registered_courses, :through => :signups, :class_name => 'Course'
   
   ##
   # Roles for CanCan
