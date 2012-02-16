@@ -2,6 +2,8 @@ class Session < ActiveRecord::Base
   
   attr_accessible :session_start, :session_end, :course_id, :location_id
   
+  scope :on_date, lambda {|d| where(:session_date => d)}
+  
   belongs_to :course
   belongs_to :location
   

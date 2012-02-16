@@ -34,6 +34,8 @@ end
 gem 'squeel'
 gem 'cancan'
 
+gem 'event-calendar'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
