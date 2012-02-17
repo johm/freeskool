@@ -61,9 +61,8 @@ ActiveRecord::Schema.define(:version => 20120217195654) do
 
   create_table "sessions", :force => true do |t|
     t.integer  "course_id"
-    t.date     "session_date"
-    t.time     "session_start"
-    t.time     "session_end"
+    t.datetime "session_start"
+    t.datetime "session_end"
     t.text     "description"
     t.integer  "location_id"
     t.datetime "created_at"

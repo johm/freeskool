@@ -34,7 +34,7 @@ end
 gem 'squeel'
 gem 'cancan'
 
-gem 'event-calendar'
+gem 'event-calendar', :require => 'event_calendar'
 
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
