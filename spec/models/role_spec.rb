@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Role do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @role = Factory(:role)
+  end
+  
+  it "should be valid" do
+    @role.should be_valid
+  end
 end

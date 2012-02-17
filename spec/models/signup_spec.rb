@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Signup do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do 
+    @signup = Factory(:signup)
+  end
+  
+  it "should be valid" do
+    @signup.should be_valid
+  end
 end

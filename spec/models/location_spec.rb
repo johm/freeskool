@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Location do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @location = Factory(:location)
+  end
+  
+  it "should be valid" do
+    @location.should be_validß
+  end
 end
