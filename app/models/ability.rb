@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     if user.has_role? :admin
       can :manage, :all
+      can :access, :rails_admin
     elsif user.has_role? :instructor
       can :manage, Course, :user_id => user.id, :is_approved => true
     else

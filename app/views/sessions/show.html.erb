@@ -2,7 +2,7 @@
 
 <p>
   <b>Course:</b>
-  <%= @session.course %>
+  <%= @session.course.try(:name) %>
 </p>
 
 <p>
@@ -27,7 +27,7 @@
 
 <p>
   <b>Location:</b>
-  <%= @session.location %>
+  <%= @session.location.try(:name) %>
 </p>
 
 

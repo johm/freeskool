@@ -6,6 +6,6 @@ describe Location do
   end
   
   it "should be valid" do
-    @location.should be_validß
+    @location.should be_valid
   end
 end
