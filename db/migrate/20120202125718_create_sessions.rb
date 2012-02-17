@@ -2,9 +2,8 @@ class CreateSessions < ActiveRecord::Migration
   def change
     create_table :sessions do |t|
       t.references :course
-      t.date :session_date
-      t.time :session_start
-      t.time :session_end
+      t.datetime :session_start
+      t.datetime :session_end
       t.text :description
       t.references :location
 
