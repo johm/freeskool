@@ -1,5 +1,7 @@
 class Course < ActiveRecord::Base
   
+  scope :approved, where(:is_approved => true)
+  
   has_many :sessions
   has_many :locations, :through => :sessions
   
