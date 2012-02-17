@@ -36,6 +36,8 @@ gem 'cancan'
 
 gem 'event-calendar'
 
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
