@@ -8,6 +8,6 @@ FactoryGirl.define do
       Enthusiastically visualize transparent scenarios through top-line sources. Efficiently initiate progressive meta-services with strategic best practices.
       EOS
     is_approved false
-    association :user
+    association :instructor, :factory=>:user
   end
 end
