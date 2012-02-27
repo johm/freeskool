@@ -57,3 +57,6 @@ gem 'devise'
 gem 'tinymce-rails'
 
 gem 'sanitize'
+
+gem 'fastercsv'
+
