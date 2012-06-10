@@ -3,7 +3,6 @@ class CreateRoles < ActiveRecord::Migration
     create_table :roles do |t|
       t.string :name
       t.string :description
-
       t.timestamps
     end
     
@@ -12,7 +11,8 @@ class CreateRoles < ActiveRecord::Migration
       t.integer :user_id, :null => false
     end
     
-    add_index(:roles_users, [:role_id, :user_id], :unique => true)
+    #this didn't work with sqlite3
+    #add_index(:roles_users, [:role_id, :user_id], :unique => true)
   end
 
   def self.down

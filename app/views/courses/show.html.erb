@@ -1,25 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<h1>
   <%= @course.name %>
+</h1>
+
+<p>
+<strong>  <%= raw @course.short_description %></strong>
 </p>
 
 <p>
-  <b>Short description:</b>
-  <%= raw @course.short_description %>
-</p>
-
-<p>
-  <b>Long description:</b>
   <%= raw @course.long_description %>
 </p>
 
-<p>
-  <b>Is approved:</b>
-  <%= @course.is_approved %>
-</p>
 
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<% if is_mine(@course) %>
+<%= link_to 'Add a session to this course', new_course_session_path(@course), :remote=>true %> 
+<% end %>

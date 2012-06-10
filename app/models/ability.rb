@@ -6,9 +6,12 @@ class Ability
       can :manage, :all
       can :access, :rails_admin
     elsif user.has_role? :instructor
-      can :manage, Course, :user_id => user.id, :is_approved => true
+      can :create, Course 
+      can :update, Course, :user_id => user.id
+      can :read, Course, :user_id => user.id
+      can :read, Course, :is_approved=>true
     else
-      can :read, :all
+      can :read, Course, :is_approved=>true
     end
     
     # Define abilities for the passed in user here. For example:

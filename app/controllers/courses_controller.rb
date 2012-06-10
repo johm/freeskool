@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  load_and_authorize_resource
+
+
   # GET /courses
   # GET /courses.json
   def index
@@ -41,10 +44,11 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
+    @course.instructor=current_user
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, :notice => 'Course was successfully created.' }
+        format.html { redirect_to @course, :notice => 'Course was successfully submitted.  Now indicate which sessions you would like to reserve at the Free School.' }
         format.json { render :json => @course, :status => :created, :location => @course }
       else
         format.html { render :action => "new" }

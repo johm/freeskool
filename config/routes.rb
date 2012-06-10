@@ -1,9 +1,13 @@
 Freeskool::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :signups
 
-  resources :courses
+  resources :courses do
+    resources :sessions
+  end
 
   resources :sessions
 

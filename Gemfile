@@ -60,3 +60,7 @@ gem 'sanitize'
 
 gem 'fastercsv'
 
+
+gem "ckeditor", "3.7.1"
+gem "carrierwave"
+gem "mini_magick"

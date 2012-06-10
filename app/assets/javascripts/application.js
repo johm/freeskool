@@ -6,6 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require twitter/bootstrap
-//= require tinymce-jquery
+//= require ckeditor/init
+//= require_tree .

@@ -8,3 +8,5 @@
 
 # Make sure there's an Admin role
 Role.create(:name => 'Admin', :description => 'freskool administrator')
+
+Role.create(:name => 'Instructor', :description => 'freskool instructor')
