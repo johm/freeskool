@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
   load_and_authorize_resource
 
+  rescue_from CanCan::AccessDenied do |exception| 
+    redirect_to '/users/sign_in', :notice => 'Please log in or create an account'
+  end
+
 
   # GET /courses
   # GET /courses.json
@@ -27,6 +31,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
+
     @course = Course.new
 
     respond_to do |format|
