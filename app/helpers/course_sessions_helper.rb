@@ -1,0 +1,2 @@
+module CourseSessionsHelper
+end
