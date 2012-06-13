@@ -16,6 +16,11 @@
 	<ul class="hmenu nav">
 	<%= render 'devise/menu/registration_items' %>
 	<%= render 'devise/menu/login_items' %>
+	<% if current_user.has_role? :instructor %>
+	<li>
+	  <%= link_to "My courses", "/my_courses" %>
+	</li>
+	<% end %>
 	</ul>
       </div>
     </div>

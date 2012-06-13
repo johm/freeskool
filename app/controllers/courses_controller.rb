@@ -9,7 +9,18 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @showmine = true if params[:mine]
+    if @showmine
+      @courses = Course.where(:user_id=>current_user) + 
+        current_user.registered_courses
+    elsif current_user.has_role? :admin
+      @courses.all
+    else
+      @courses = Course.where(:is_approved=>true)
+    end
+
+    @courses.sort_by(&:created_at)
+    
 
     respond_to do |format|
       format.html # index.html.erb

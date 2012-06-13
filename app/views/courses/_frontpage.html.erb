@@ -1,23 +1,8 @@
-<h1>
-<% if @showmine %>
-My 
-<% else %>
-All
-<% end %>
-Courses
-</h1>
-
 <ul>
 <% @courses.each do |course| %>
   <li>
     <h3>
       <%= link_to course.name, course %>
-      <%  if course.is_approved && @showmine %>
-      <span class='label label-success'>Approved!</span>
-      <% elsif (@showmine || (current_user.has_role? :admin)) %>
-      <span class='label label-warning'>Under review</span>
-      <% end  %>
-      
       <% if is_mine(course) %>
       <span class="label label-info">I'm teaching this!</span>
       <% end %>
@@ -30,8 +15,7 @@ Courses
     <%= raw course.short_description %>
   </li>
 <% end %>
+
 </ul>
-
-
 
 

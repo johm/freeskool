@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   
   scope :approved, where(:is_approved => true)
   
-  has_many :sessions, :dependent => :destroy
+  has_many :course_sessions, :dependent => :destroy
   has_many :locations, :through => :sessions
   
   has_many :signups, :dependent => :destroy

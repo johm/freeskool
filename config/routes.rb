@@ -5,17 +5,21 @@ Freeskool::Application.routes.draw do
 
   resources :signups
 
+  match '/my_courses' => 'courses#index', :as => :course, :mine => "yes"
+
   resources :courses do
-    resources :sessions
+    resources :course_sessions
   end
 
-  resources :sessions
+  resources :course_sessions
 
   resources :locations
 
   devise_for :users
   
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
