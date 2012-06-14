@@ -28,6 +28,7 @@ class CourseSessionsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js {}
       format.json { render :json => @course_session }
     end
   end

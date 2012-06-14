@@ -11,7 +11,7 @@ Courses
 <% @courses.each do |course| %>
   <li>
     <h3>
-      <%= link_to course.name, course %>
+      <%= link_to course.name, course_path(course) %>
       <%  if course.is_approved && @showmine %>
       <span class='label label-success'>Approved!</span>
       <% elsif (@showmine || (current_user.has_role? :admin)) %>

@@ -1,10 +1,10 @@
-<%= form_for(@session) do |f| %>
-  <% if @session.errors.any? %>
+<%= form_for(@course_session) do |f| %>
+  <% if @course_session.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
+      <h2><%= pluralize(@course_session.errors.count, "error") %> prohibited this session from being saved:</h2>
 
       <ul>
-      <% @session.errors.full_messages.each do |msg| %>
+      <% @course_session.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -16,16 +16,16 @@
     <%= f.text_field :course %>
   </div>
   <div class="field">
-    <%= f.label :session_date %><br />
-    <%= f.date_select :session_date %>
+    <%= f.label :course_session_date %><br />
+    <%= f.date_select :course_session_date %>
   </div>
   <div class="field">
-    <%= f.label :session_start %><br />
-    <%= f.time_select :session_start %>
+    <%= f.label :course_session_start %><br />
+    <%= f.time_select :course_session_start %>
   </div>
   <div class="field">
-    <%= f.label :session_end %><br />
-    <%= f.time_select :session_end %>
+    <%= f.label :course_session_end %><br />
+    <%= f.time_select :course_session_end %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

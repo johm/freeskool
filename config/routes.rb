@@ -5,11 +5,11 @@ Freeskool::Application.routes.draw do
 
   resources :signups
 
-  match '/my_courses' => 'courses#index', :as => :course, :mine => "yes"
-
   resources :courses do
     resources :course_sessions
   end
+
+  match '/my_courses' => 'courses#index', :mine => "yes"
 
   resources :course_sessions
 
