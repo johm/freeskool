@@ -8,6 +8,57 @@
 
 /*
  *= require twitter/bootstrap
+ *= require bootstrap-datepicker
 */
 
 
+body {
+background-image:url('/assets/freeschool-mural-lq.jpg');
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+}
+
+.hero-unit {
+background-color:rgba(255,255,255,0.9) !important;
+
+}
+
+@font-face {
+    font-family: 'TSCBFSSlabRegular';
+    src: url('/assets/fonts/tsc_bfs_slab-webfont.eot');
+    src: url('/assets/fonts/tsc_bfs_slab-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/tsc_bfs_slab-webfont.woff') format('woff'),
+         url('/assets/fonts/tsc_bfs_slab-webfont.ttf') format('truetype'),
+         url('/assets/fonts/tsc_bfs_slab-webfont.svg#TSCBFSSlabRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SantaFeLETPlain';
+    src: url('/assets/fonts/santafeletplain1.0-webfont.eot');
+    src: url('/assets/fonts/santafeletplain1.0-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/santafeletplain1.0-webfont.woff') format('woff'),
+         url('/assets/fonts/santafeletplain1.0-webfont.ttf') format('truetype'),
+         url('/assets/fonts/santafeletplain1.0-webfont.svg#SantaFeLETPlain') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+ 
+
+
+h1 {
+    font-family: 'SantaFeLETPlain';
+    font-weight:normal !important;
+    font-size:90px !important;
+} 
+
+
+h2 {
+
+}

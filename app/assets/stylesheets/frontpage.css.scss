@@ -1,3 +1,38 @@
 // Place all the styles related to the frontpage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#upcoming {
+	  background-color:#fff;
+	  background-color:rgba(255,233,197,0.8);
+	  border-radius: 6px 6px 6px 6px;
+}	  
+
+ .inner {
+	  padding:10px;
+}
+
+.span3 {
+    background-color:#666666;
+    background-color:rgba(128,128,128,0.9);
+    border-radius: 6px 6px 6px 6px;
+    color:#fff;
+    margin-bottom:27px;
+}
+
+
+.span3 h3 {
+    color:#111;
+    margin-bottom:9px;
+    font-family:'TSCBFSSlabRegular';
+    font-size:14px;
+}
+
+.span3 p {
+font-size: 16px;
+line-height:23px;
+min-height:150px;
+}
+
+.btn-wrap {text-align:center;}
