@@ -22,6 +22,10 @@ RailsAdmin.config do |config|
   # or for a dynamic name:
   # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 
+  
+  config.attr_accessible_role do
+    :admin if current_user.roles.include? Role.find_by_name("Admin")
+  end
 
   #  ==> Global show view settings
   # Display empty fields in show views

@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   
-  has_many :sessions
-  has_many :courses, :through => :sessions
+  has_many :course_sessions
+  has_many :courses, :through => :course_sessions
   
   
   def is_available?(start_t, end_t)

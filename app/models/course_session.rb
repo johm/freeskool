@@ -2,9 +2,10 @@ class CourseSession < ActiveRecord::Base
   
   has_event_calendar :start_at_field => 'course_session_start', :end_at_field => 'course_session_end'
   
-  attr_accessible :course_session_start, :course_session_end, :course_id, :location_id, :course_session_date, :description
-  
-  scope :on_date, lambda {|d| where(:course_session_date => d)}
+  attr_accessible :course_session_start, :course_session_end, :course_id, :location_id,  :description
+  clean_up_html [:description]
+
+# scope :on_date, lambda {|d| where(:course_session_date => d)}
   
   belongs_to :course
   belongs_to :location
@@ -14,54 +15,37 @@ class CourseSession < ActiveRecord::Base
   validate :course_session_obeys_second_law
   validate :course_session_starts_and_ends_on_same_day
   validate :course_session_should_not_overlap_other_sessions
-  
-  delegate :name, :to => :course
+
+#  delegate :name, :to => :course
   
   def course_session_date
     course_session_start.to_date if course_session_start
   end
 
-  def temporally_included_sessions
-    Session.where('course_session_start>= ? and course_session_end <=?',course_session_start,course_session_end).find_all {|x| x!= self}
+  def course_session_start_hour
+    course_session_start.to_time.strftime("%H") if course_session_start
   end
 
-  def course_session_temporally_includes_other_session?
-    ! temporally_included_sessions.empty?
+  def course_session_start_minutes
+    course_session_start.to_time.strftime("%M") if course_session_start
   end
+
+  def course_session_end_hour
+    course_session_end.to_time.strftime("%H") if course_session_end
+  end
+
+  def course_session_end_minutes
+    course_session_end.to_time.strftime("%M") if course_session_end
+  end
+
   
-  def temporally_including_sessions
-    Session.where('course_session_start<= ? and course_session_end >=?',course_session_start,course_session_end).find_all {|x| x!= self}
-  end
-  
-  def course_session_temporally_included_in_other_session?
-    ! temporally_including_sessions.empty?
+  def overlapping_sessions #tk add location
+    CourseSession.find_by_sql ["SELECT * from course_sessions where NOT(? >= course_session_end OR ? <= course_session_start) ", course_session_start,course_session_end] 
   end
 
-  def earlier_overlapping_sessions # start included in another session
-    Session.where('course_session_start <= ? and course_session_end > ?',course_session_start,course_session_start).find_all {|x| x!= self}
+  def name 
+    course_session_start.to_date if course_session_start
   end
-
-  def course_session_temporally_overlaps_earlier?
-    ! earlier_overlapping_sessions.empty? 
-  end
-
-  def later_overlapping_sessions # end included in another session
-    Session.where('course_session_start < ? and course_session_end >=?',course_session_end,course_session_end).find_all {|x| x!= self}
-  end
-
-  def course_session_temporally_overlaps_later?
-    ! later_overlapping_sessions.empty?
-  end
-
-
-  def course_session_coincident_with_other_sessions?
-    course_session_temporally_includes_other_session? or course_session_temporally_included_in_other_session? or course_session_temporally_overlaps_later? or course_session_temporally_overlaps_earlier?
-  end
-
-  def coincident_sessions
-    temporally_included_sessions + temporally_including_sessions + earlier_overlapping_sessions + later_overlapping_sessions
-  end   
-
   
   private
   
@@ -72,8 +56,8 @@ class CourseSession < ActiveRecord::Base
 
 
   def course_session_should_not_overlap_other_sessions
-    if course_session_coincident_with_other_sessions? && ! coincident_sessions.find_all {|x| x.location=location}.empty? 
-      errors.add(:course_session_start,"That session conflicts with another session in this location, please select a different date and/or time")
+    if !overlapping_sessions.empty?
+      errors.add(:course_session_start_hour, "There is already a session scheduled here at that time!")
     end
   end
 
@@ -83,7 +67,6 @@ class CourseSession < ActiveRecord::Base
     end
   end
   
-
   def course_session_starts_and_ends_on_same_day
     unless course_session_start.to_date == course_session_end.to_date
       errors.add(:course_session_end, "must be the same day as course_session_start.")

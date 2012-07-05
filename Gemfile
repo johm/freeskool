@@ -20,7 +20,6 @@ end
 gem 'less-rails-bootstrap'
 
 gem 'jquery-rails'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -64,3 +63,6 @@ gem 'fastercsv'
 gem "ckeditor", "3.7.1"
 gem "carrierwave"
 gem "mini_magick"
+
+
+gem 'bootstrap-datepicker-rails'

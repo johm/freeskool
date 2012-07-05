@@ -1,4 +1,8 @@
 class CourseSessionsController < ApplicationController
+  load_and_authorize_resource :course
+  load_and_authorize_resource :course_session, :through => :course
+
+
   # GET /course_sessions
   # GET /course_sessions.json
   def index
@@ -25,6 +29,16 @@ class CourseSessionsController < ApplicationController
   # GET /course_sessions/new.json
   def new
     @course_session = CourseSession.new
+    @course=Course.find(params[:course_id])
+    @last_session=@course.course_sessions.find(:last,:order => "course_session_start")
+    if !@last_session.nil?
+      @course_session.course_session_start=@last_session.course_session_start+7.days
+      @course_session.course_session_start_minutes=@course_session.course_session_start.strftime("%M") 
+      @course_session.course_session_start_hour=@course_session.course_session_start.strftime("%H") 
+      @course_session.course_session_end=@last_session.course_session_end+7.days
+      @course_session.location=@last_session.location
+    end
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,8 +55,13 @@ class CourseSessionsController < ApplicationController
   # POST /course_sessions
   # POST /course_sessions.json
   def create
-    @course_session = CourseSession.new(params[:course_session])
+    course_session_start="#{params[:course_session][:course_session_date]} #{params[:course_session][:course_session_start_hour]}:#{params[:course_session][:course_session_start_minutes]}"    
+    course_session_end="#{params[:course_session][:course_session_date]} #{params[:course_session][:course_session_end_hour]}:#{params[:course_session][:course_session_end_minutes]}"
 
+    @course_session = CourseSession.new(params[:course_session].update({:course_session_start=>course_session_start,:course_session_end=>course_session_end}))
+    @course_session.course=Course.find(params[:course_id])
+    
+    
     respond_to do |format|
       if @course_session.save
         format.html { redirect_to @course_session, :notice => 'CourseSession was successfully created.' }

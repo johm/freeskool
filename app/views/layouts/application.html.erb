@@ -7,16 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="overlay" style="position: fixed;
+<div id="overlay" style="position: absolute;
   width:50%;
   background-color:#FFF;
   padding:10px;
   border:5px solid #CCC;
   z-index:200;
-  margin: 5% auto;
+  margin-left:100px;
   left: 0;
   right: 0;
   display:none;
+  margin-top:30px;
+  border-radius:5px;
 "></div>
 <div class="navbar ">
   <div class="navbar-inner">
@@ -26,11 +28,17 @@
 	<ul class="hmenu nav">
 	<%= render 'devise/menu/registration_items' %>
 	<%= render 'devise/menu/login_items' %>
-	<% if current_user.has_role? :instructor %>
+	<% if !current_user.nil? and current_user.has_role? :instructor %>
 	<li>
 	  <%= link_to "My courses", "/my_courses" %>
 	</li>
 	<% end %>
+	<% if !current_user.nil? and current_user.has_role? :admin %>
+	<li>
+	  <%= link_to "Admin", "/admin" %>
+	</li>
+	<% end %>
+
 	</ul>
       </div>
     </div>

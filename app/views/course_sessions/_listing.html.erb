@@ -1,1 +1,17 @@
-<%= course_session.course_session_start %>-<%= course_session.course_session_end %> (<%= course_session.location %>)
+<div class="course-session">
+  <h4>
+    <%= course_session.course_session_start.strftime("%A %B %e") %>
+    <% if course_session.course_session_start.year != DateTime.now.year %>
+    <%= course_session.course_session_start.strftime("%Y") %>
+    <% end %>
+  </h4>
+  <h5>
+    <%= course_session.course_session_start.strftime("%l:%M%p") %>
+    -
+    <%= course_session.course_session_end.strftime("%l:%M%p") %>
+    (<%= course_session.location %>)
+  </h5>
+  <div class="small">
+    <%= raw course_session.description %>
+  </div>
+</div>

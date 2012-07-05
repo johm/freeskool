@@ -1,7 +1,7 @@
 class FrontpageController < ApplicationController
 
   def index
-    @courses=Course.all
+    @courses=Course.approved
   end
 
 

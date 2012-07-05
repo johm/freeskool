@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(:version => 20120610130451) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "course_sessions", :force => true do |t|
+    t.integer  "course_id"
+    t.datetime "course_session_start"
+    t.datetime "course_session_end"
+    t.text     "description"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_sessions", ["course_id"], :name => "index_course_sessions_on_course_id"
+  add_index "course_sessions", ["location_id"], :name => "index_course_sessions_on_location_id"
+
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.text     "short_description"
@@ -71,22 +84,6 @@ ActiveRecord::Schema.define(:version => 20120610130451) do
     t.integer "role_id", :null => false
     t.integer "user_id", :null => false
   end
-
-  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id", :unique => true
-
-  create_table "sessions", :force => true do |t|
-    t.integer  "course_id"
-    t.date     "session_date"
-    t.time     "session_start"
-    t.time     "session_end"
-    t.text     "description"
-    t.integer  "location_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sessions", ["course_id"], :name => "index_sessions_on_course_id"
-  add_index "sessions", ["location_id"], :name => "index_sessions_on_location_id"
 
   create_table "signups", :force => true do |t|
     t.integer  "course_id"

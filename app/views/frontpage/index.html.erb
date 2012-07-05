@@ -10,42 +10,48 @@
   <div class="row-fluid">
 
     <div class="span3">
-      <h3>Take a course</h3> 
-      <p>
-	Every course offered through the Baltimore Free
-      School is 100% free of charge to learners.  Sign up online today!
-      </p>
-      <a href="/courses" class="btn">Browse current courses</a>
+      <div class="inner">
+	<h3>Take a course</h3> 
+	<p>
+	  Every course offered through the Baltimore Free
+	  School is 100% free of charge to learners.  Sign up online today!
+	</p>
+	<div class="btn-wrap"><a href="/courses" class="btn">Browse current courses</a></div>
+      </div>
     </div>
-
     <div class="span3">
-      <h3>Teach a course</h3>
-      <p>Anyone can teach a course or organize a discussion or workshop at the Free School; propose one right now!</p>
-      <a href="/courses/new" class="btn">Propose a course</a>
-    </div>
-
-    <div class="span3">
-      <h3>Support the project</h3>
-      <p>Get involved as a volunteer organizer or make a tax-deductible donation to help us keep the
-      doors open.</p>
-      <a href="/helpthefreeschool" class="btn">Help the Free School</a>
+      <div class="inner">
+	<h3>Teach a course</h3>
+	<p>Anyone can teach a course or organize a discussion or workshop at the Free School; propose one right now!</p>
+	<div class="btn-wrap"><a href="/courses/new" class="btn">Propose a course</a></div>
+      </div>
     </div>
     
     <div class="span3">
-      <h3>More info</h3>
-      <p>Information on renting the space for private meetings, our consensus-based  collective structure, our history and more.</p>
-      <a href="/faq" class="btn">Visit the FAQ</a>
+      <div class="inner">
+	<h3>Support the project</h3>
+	<p>Get involved as a volunteer organizer or make a tax-deductible donation to help us keep the
+	  doors open.</p>
+	<div class="btn-wrap"><a href="/helpthefreeschool" class="btn">Help the Free School</a></div>
     </div>
-
-
+    </div>
+    
+    <div class="span3">
+      <div class="inner">
+	<h3>More info</h3>
+      <p>Information on renting the space for private meetings, our consensus-based  collective structure, our history and more.</p>
+      <div class="btn-wrap"><a href="/faq" class="btn">Visit the FAQ</a></div>
+      </div>
+    </div>
   </div>
   
 
 </div>
 
-<div class="span4">
+<div class="span4" id="upcoming">
+  <div class="inner">
     <h2>Upcoming Courses</h2>
     <%= render 'courses/frontpage' %>
-
+  </div>
 </div>
 

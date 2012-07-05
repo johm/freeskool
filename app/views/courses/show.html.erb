@@ -21,7 +21,7 @@
 <h2>Course sessions</h2>
 <ul id="course_sessions">
 <% @course.course_sessions.each do |course_session| %>  
-<%= render 'course_session/listing', :course_session=>course_session %>
+<%= render 'course_sessions/listing', :course_session=>course_session %>
 <% end %>
 </ul>
 <% if is_mine(@course) %>
