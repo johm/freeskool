@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
 #upcoming {
 	  background-color:#fff;
 	  background-color:rgba(255,233,197,0.8);
@@ -25,14 +26,18 @@
 .span3 h3 {
     color:#111;
     margin-bottom:9px;
-    font-family:'TSCBFSSlabRegular';
-    font-size:14px;
+    font-family:"Lato",'Century Gothic';
+    font-size:18px;
+    text-transform:uppercase;
+    word-spacing:2px;
 }
 
 .span3 p {
-font-size: 16px;
-line-height:23px;
+font-size: 14px;
+line-height:20px;
 min-height:150px;
+font-family:"Lato","Century Gothic";
+font-weight:300;
 }
 
 .btn-wrap {text-align:center;}

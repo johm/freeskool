@@ -11,6 +11,7 @@
  *= require bootstrap-datepicker
 */
 
+@import url(http://fonts.googleapis.com/css?family=Lato:400,100,300,100italic,300italic,400italic,900italic,900,700italic,700);
 
 body {
 background-image:url('/assets/freeschool-mural-lq.jpg');
@@ -18,7 +19,7 @@ background-image:url('/assets/freeschool-mural-lq.jpg');
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-
+font-family:Lato;
 }
 
 .hero-unit {
@@ -53,12 +54,79 @@ background-color:rgba(255,255,255,0.9) !important;
 
 
 h1 {
-    font-family: 'SantaFeLETPlain';
-    font-weight:normal !important;
-    font-size:90px !important;
+/*    font-family: 'SantaFeLETPlain';
+    font-weight:normal !important; */
+    font-size:45px !important; 
+    text-transform:uppercase;
+    font-family:'Lato','Century Gothic','Code';
+    font-weight:700 !important;
+    letter-spacing:0px !important;
 } 
 
 
-h2 {
+.hero-unit p {
+    margin-top:12px;
+    font-family:"Lato",'Century Gothic';
+    font-weight:300 !important;
+}
 
+
+h2 {
+    font-family:Lato;
+    text-transform:uppercase;
+    font-weight:normal !important;
+}
+
+h3 {
+   font-family:Lato;
+}
+
+@font-face {
+    font-family: 'Code';
+    src: url('/assets/fonts/code_bold-webfont.eot');
+    src: url('/assets/fonts/code_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/code_bold-webfont.woff') format('woff'),
+         url('/assets/fonts/code_bold-webfont.ttf') format('truetype'),
+         url('/assets/fonts/code_bold-webfont.svg#CodeBoldRegular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Code';
+    src: url('/assets/fonts/code_light-webfont.eot');
+    src: url('/assets/fonts/code_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/code_light-webfont.woff') format('woff'),
+         url('/assets/fonts/code_light-webfont.ttf') format('truetype'),
+         url('/assets/fonts/code_light-webfont.svg#CodeLightRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.btn {
+font-family:Lato;
+}
+
+
+#upcoming p {
+font-family:Lato;
+font-weight:300;
+}
+
+.label {
+position:relative;
+top:-3px;
+}
+
+.navbar ul{
+font-family:Lato;
+font-weight:500;
+font-size:18px;
+margin-top:14px !important;
 }
