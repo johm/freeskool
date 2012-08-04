@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120804151936) do
+ActiveRecord::Schema.define(:version => 20120804213520) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120804151936) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "is_private"
   end
 
   add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
@@ -60,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20120804151936) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "address"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

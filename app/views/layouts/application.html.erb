@@ -8,6 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="overlay" style="position: absolute;
   width:50%;
   background-color:#FFF;
@@ -21,12 +30,12 @@
   margin-top:30px;
   border-radius:5px;
 "></div>
-<div class="navbar ">
-  <div class="navbar-inner">
+<div class="navbar " >
+  <div class="navbar-inner" style="min-height:120px;">
     <div class="container-fluid">
       <div class="span12">
-	<a href="/" class="brand"><%= image_tag "bfs-logo-grey.png", {:width=>'200px'} %></a> 
-	<ul class="hmenu nav">
+	<a href="/" class="brand"><%= image_tag "bfs-logo-grey.png", {:width=>'200px'} %></a><br /> 
+	<ul class="hmenu nav" style="position:absolute;left:50px;top:50px;">
 	<%= render 'devise/menu/registration_items' %>
 	<%= render 'devise/menu/login_items' %>
 	
@@ -39,11 +48,11 @@
 	</li>
 
 	<li>
-	  <%= link_to "Help","/helpthefreeschool" %>
+	  <%= link_to "Help","/static/helpthefreeschool" %>
 	</li>
 
 	<li>
-	  <%= link_to "FAQ","/faq" %>
+	  <%= link_to "FAQ","/static/faq" %>
 	</li>
 
 	<% if !current_user.nil? and current_user.has_role? :instructor %>
@@ -57,7 +66,14 @@
 	</li>
 	<% end %>
 
+
 	</ul>
+	  <div style="position:absolute;top:0px;right:0px;" class="fb-like-box" data-href="http://www.facebook.com/pages/The-Baltimore-Free-School/260882600670947" data-width="292" data-colorscheme="dark" data-show-faces="false" data-stream="false" data-header="true"></div>
+	  <div style="position:absolute;top:70px;right:0px;">
+	    <a href="https://twitter.com/bmorefreeschool" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @bmorefreeschool</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <div style="text-align:right;padding-right:30px;"><a href="http://redemmas.org/cgi-bin/mailman/listinfo/freeschool-announce">Subscribe to our mailing list</a></div>
+	  </div>
       </div>
     </div>
   </div>

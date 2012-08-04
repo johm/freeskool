@@ -5,8 +5,7 @@ module ApplicationHelper
   end
   
   def taking_this(course)
-    
-    user_signed_in? && ! (current_user.signups.where(:course_id=>Course.find(:first)).empty?)
+    user_signed_in? && ! (current_user.signups.where(:course_id=>course).empty?)
   end
 
 

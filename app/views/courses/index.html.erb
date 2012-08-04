@@ -1,20 +1,25 @@
+<div class="span8" id="content">
+<div class="inner">
 <h1>
 <% if @showmine %>
 My 
-<% else %>
+<% elsif current_user.has_role? :admin %>
 All
+<% else %>
+Upcoming
 <% end %>
 Courses
 </h1>
+<h2 style="text-align:right"><%= link_to "Switch to calendar", '/calendar' %> </h2>
 
-<ul>
+<ul id="courses">
 <% @courses.each do |course| %>
   <li>
     <h3>
       <%= link_to course.name, course_path(course) %>
       <%  if course.is_approved && @showmine %>
       <span class='label label-success'>Approved!</span>
-      <% elsif (@showmine || (current_user.has_role? :admin)) %>
+      <% elsif (!course.is_approved && (@showmine || (current_user.has_role? :admin))) %>
       <span class='label label-warning'>Under review</span>
       <% end  %>
       
@@ -31,7 +36,20 @@ Courses
   </li>
 <% end %>
 </ul>
-
+</div>
+</div>
+<div class="span4">
+<div class="well">
+<h2>Info for learners</h2>
+<ul>
+<li>Curabitur molestie erat nec mauris blandit dignissim.</li>
+<li>Etiam accumsan lorem at risus posuere at accumsan eros sodales.</li>
+<li>Cras quis dolor eget felis bibendum auctor et sed sapien.</li>
+<li>Nullam ut mauris eros, ut fringilla augue.</li>
+<li>Pellentesque rutrum accumsan nulla, ac iaculis purus eleifend ac.</li>
+</ul>
+</div>
+</div>
 
 
 

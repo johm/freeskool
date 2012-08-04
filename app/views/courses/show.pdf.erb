@@ -1,0 +1,97 @@
+<html>
+<head>
+<style type="text/css">
+
+body {
+font-family:Lato;
+}
+
+
+h1 {
+text-transform:uppercase;
+font-size:75pt;
+}
+
+footer {
+position:absolute;
+top:11in;
+font-size:25pt;
+text-align:center;
+}
+ 
+
+
+table {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+td {
+  border-width: 0; 
+  border-style: none;
+  border-color: #0000ff; 
+  border-collapse: collapse; 
+  padding: 0; 
+  margin: 0; 
+  width: 5px; 
+  height: 5px; 
+}
+td.black { background-color: #000; }
+td.white { background-color: #fff; }
+
+</style>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+  <h1>
+    <%= @course.name %>
+  </h1>
+  
+  <p>
+    <font color="#ff0000" size="20pt"><%= raw @course.short_description %></font>
+  </p>
+
+  <p>
+    <%= raw @course.long_description %>
+  </p>
+
+
+<table>
+<% @qr.modules.each_index do |x| %>
+  <tr>  
+  <% @qr.modules.each_index do |y| %>
+   <% if @qr.dark?(x,y) %>
+    <td class="black"/>
+   <% else %>
+    <td class="white"/>
+   <% end %>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+<h2>Course sessions</h2>
+
+<ul id="course_sessions">
+<% @course.course_sessions.each do |course_session| %>  
+<%= render 'course_sessions/listing', :course_session=>course_session %>
+<% end %>
+</ul>
+<% if is_mine(@course) %>
+<%= link_to 'Add a session to this course', new_course_course_session_path(@course), :remote=>true %> 
+<% end %>
+
+<footer>
+<%= wicked_pdf_image_tag 'bfs-logo-print.jpg' %>
+<div>
+  freeschool.redemmas.org • freeschool@redemmas.org 
+</div>
+</footer>
+
+
+
+</body>
+</html>

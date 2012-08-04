@@ -1,2 +1,2 @@
-$('#overlay').html("<%= escape_javascript(render(:partial => 'course_sessions/new')) %>");
+$('#overlay').html("<a href='#' onclick='$(this).parent().fadeOut()' class='close'>X</a><%= escape_javascript(render(:partial => 'course_sessions/new')) %>");
 $('#overlay').fadeIn();

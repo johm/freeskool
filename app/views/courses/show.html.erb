@@ -4,15 +4,43 @@
   <p id="notice"><%= notice %></p>
   <h1>
     <%= @course.name %>
+    <% if !current_user.nil? && (current_user.has_role? :admin) %>
+    <%= link_to '[Edit]',"/admin/course/#{@course.id}/edit" %>
+    <% end %>
   </h1>
+  
+
+  
   
   <p>
     <strong>  <%= raw @course.short_description %></strong>
   </p>
-
+<h3 id="register4course" style="text-align:right;">
+  <% if current_user.nil? %>
+    <a href="/users/sign_in">Sign in</a> to register for this course
+  <% elsif !taking_this(@course) %>
+  <%= link_to 'Register for this course', new_course_signup_path(@course) %> 
+  <% else %>
+      <span class="label">I'm signed up for this!</span>
+  <% end %>
+</h3>
   <p>
     <%= raw @course.long_description %>
   </p>
+  
+  <!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+<a class="addthis_button_preferred_1"></a>
+<a class="addthis_button_preferred_2"></a>
+<a class="addthis_button_preferred_3"></a>
+<a class="addthis_button_preferred_4"></a>
+<a class="addthis_button_compact"></a>
+<a class="addthis_counter addthis_bubble_style"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4ea9ff0b562620d0"></script>
+<!-- AddThis Button END -->
+
   </div>
 </div>
 
@@ -26,8 +54,14 @@
 <%= render 'course_sessions/listing', :course_session=>course_session %>
 <% end %>
 </ul>
-<% if is_mine(@course) %>
+<% if is_mine(@course) || (! (current_user.nil?) && (current_user.has_role? :admin)) %>
 <%= link_to 'Add a session to this course', new_course_course_session_path(@course), :remote=>true %> 
+<h2>People signed up for this course</h2>
+<ul>
+<% @course.signups.each do |signup| %>
+<li><%= signup.user.name %></li>
+<% end %>
+</ul>
 <% end %>
 </div>
 </div>

@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
-  
-  
+    
   scope :approved, where(:is_approved => true)
+  scope :ispublic, where(:is_private => false)
 
   scope :upcoming, joins(:course_sessions).where("course_session_start > ?",DateTime.now)
   
@@ -17,7 +17,7 @@ class Course < ActiveRecord::Base
 
   editable_attributes = [:name,:short_description,:long_description,:course_sessions_attributes]
   attr_accessible *editable_attributes
-  attr_accessible :name,:short_description,:long_description,:is_approved,:course_sessions_attributes,:user_id, :as=>:admin
+  attr_accessible :name,:short_description,:long_description,:is_approved,:course_sessions_attributes,:user_id,:is_private,:instructor, :as=>:admin
 
   clean_up_html [:short_description,:long_description]
 

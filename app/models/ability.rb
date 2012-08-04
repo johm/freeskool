@@ -10,13 +10,15 @@ class Ability
     elsif user.has_role? :instructor
       can :create, Course 
       can :update, Course, :user_id => user.id
-      can :read, CourseSession
+      can :read, CourseSession, :course => {:is_approved => true,:is_private=>false }
       can :manage, CourseSession, :course => { :user_id => user.id }
       can :read, Course, :user_id => user.id
-      can :read, Course, :is_approved=>true
+      can :read, Course, :is_approved=>true,:is_private=>false
+      can :read, Page
     else
-      can :read, Course, :is_approved=>true
-      can :read, CourseSession, :course => {:is_approved => true }
+      can :read, Page
+      can :read, Course, :is_approved=>true,:is_private=>false
+      can :read, CourseSession, :course => {:is_approved => true,:is_private=>false }
     end
     
     # Define abilities for the passed in user here. For example:

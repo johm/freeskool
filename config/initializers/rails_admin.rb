@@ -40,7 +40,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = [Course, Location, Role, Session, Signup, User]
 
   # Add models here if you want to go 'whitelist mode':
-  config.included_models = [Course, Location,User,CourseSession]
+  config.included_models = [Course, Location,User,Page,CourseSession]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
@@ -109,11 +109,26 @@ RailsAdmin.config do |config|
     end
   end
 
+ config.model Page do
+    edit do
+      field :name 
+      field :content, :text do 
+        ckeditor true
+      end
+      field :slug
+    end
+  end
+
 
   config.model Course do
     edit do 
       field :name
-      field :instructor
+      field :instructor do 
+        pretty_value do
+          user = User.find(bindings[:object].instructor_id.to_s)
+          user.name 
+        end
+      end
       field :short_description, :text  do
         ckeditor true
       end
@@ -121,6 +136,7 @@ RailsAdmin.config do |config|
         ckeditor true
       end
       field :is_approved
+      field :is_private
 
       field :course_sessions, :has_many_association do
         nested_form true

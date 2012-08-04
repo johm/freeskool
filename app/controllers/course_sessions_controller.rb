@@ -33,9 +33,13 @@ class CourseSessionsController < ApplicationController
     @last_session=@course.course_sessions.find(:last,:order => "course_session_start")
     if !@last_session.nil?
       @course_session.course_session_start=@last_session.course_session_start+7.days
-      @course_session.course_session_start_minutes=@course_session.course_session_start.strftime("%M") 
-      @course_session.course_session_start_hour=@course_session.course_session_start.strftime("%H") 
+      @course_session_start_minutes=@course_session.course_session_start.strftime("%M") 
+      @course_session_start_hour=@course_session.course_session_start.strftime("%H") 
       @course_session.course_session_end=@last_session.course_session_end+7.days
+      @course_session_end_minutes=@course_session.course_session_end.strftime("%M") 
+      @course_session_end_hour=@course_session.course_session_end.strftime("%H") 
+
+
       @course_session.location=@last_session.location
     end
     

@@ -1,4 +1,6 @@
 Freeskool::Application.routes.draw do
+  resources :pages
+
   mount Ckeditor::Engine => '/ckeditor'
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -7,6 +9,7 @@ Freeskool::Application.routes.draw do
 
   resources :courses do
     resources :course_sessions
+    resources :signups
   end
 
   match '/my_courses' => 'courses#index', :mine => "yes"
@@ -19,7 +22,8 @@ Freeskool::Application.routes.draw do
   
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
-
+  match 'static/:a_slug' => 'pages#show'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

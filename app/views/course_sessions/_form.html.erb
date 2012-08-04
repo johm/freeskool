@@ -34,12 +34,12 @@
 	</script>
       </td>
       <td>
-	<%= f.select :course_session_start_hour, options_for_select(reasonable_hours()), {},{:class=>'timeselect'} %>
-	<%= f.select :course_session_start_minutes, options_for_select([['00','00'],['30','30']]), {},{:class=>'timeselect'} %>
+	<%= f.select :course_session_start_hour, options_for_select(reasonable_hours(),@course_session_start_hour), {},{:class=>'timeselect'} %>
+	<%= f.select :course_session_start_minutes, options_for_select([['00','00'],['30','30']],@course_session_start_minutes), {},{:class=>'timeselect'} %>
 	</td>
       <td>
-	<%= f.select :course_session_end_hour, options_for_select(reasonable_hours()), {}, {:class=>'timeselect'} %>
-	<%= f.select :course_session_end_minutes, options_for_select([['00','00'],['30','30']]), {}, {:class=>'timeselect'} %>
+	<%= f.select :course_session_end_hour, options_for_select(reasonable_hours(),@course_session_end_hour), {}, {:class=>'timeselect'}   %>
+	<%= f.select :course_session_end_minutes, options_for_select([['00','00'],['30','30']],@course_session_end_minutes), {}, {:class=>'timeselect'} %>
       </td>
     </tr>
     </table>
@@ -53,7 +53,8 @@
   <br />
   <div class="field">
     <%= f.label :location,"Location of this session?" %><br />
-    <%= f.text_field :location %>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
     elsif current_user.has_role? :admin
       @courses.all
     else
-      @courses = Course.where(:is_approved=>true)
+      @courses=Course.upcoming.approved.ispublic.uniq
     end
 
     @courses.sort_by(&:created_at)

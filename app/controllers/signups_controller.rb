@@ -25,9 +25,15 @@ class SignupsController < ApplicationController
   # GET /signups/new.json
   def new
     @signup = Signup.new
-
+    @course = Course.find(params[:course_id])
+    if ! (current_user.nil? || !@course.is_approved? || @course.is_private )
+      @signup.user=current_user
+      @signup.course=@course
+      @signup.save!
+    end
+    
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to @signup.course, :notice => 'You have successfully registered for this course!' } # new.html.erb
       format.json { render :json => @signup }
     end
   end

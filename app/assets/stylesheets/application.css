@@ -68,7 +68,7 @@ padding:20px;
 h1 {
 /*    font-family: 'SantaFeLETPlain';
     font-weight:normal !important; */
-    font-size:45px !important; 
+    font-size:40px !important; 
     text-transform:uppercase;
     font-family:'Lato','Century Gothic','Code';
     font-weight:700 !important;
@@ -140,7 +140,11 @@ top:-3px;
 font-family:Lato;
 font-weight:500;
 font-size:18px;
-margin-top:14px !important;
+/*margin-top:14px !important;*/
+}
+
+#courses li {
+margin-bottom:12px;
 }
 
 
@@ -164,4 +168,36 @@ line-height:14px;
 
 li.course {
 margin-bottom:14px;
+}
+
+
+.alert {
+margin-left:20px;
+margin-right:20px;
+
+}
+
+
+.ec-event {
+padding-bottom:5px;
+font-size:10px;
+}
+
+.ec-event {
+  color: white;
+  padding-right: 1px;
+  padding-left: 11px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  white-space:normal !important;
+  height: auto !important;
+}
+
+.ec-event p {
+margin:0px;
+}
+
+thead th {
+padding-bottom:10px;
 }

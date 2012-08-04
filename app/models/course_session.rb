@@ -1,7 +1,7 @@
 class CourseSession < ActiveRecord::Base
   
-  #borks rails_admin?
-  #has_event_calendar :start_at_field => 'course_session_start', :end_at_field => 'course_session_end'
+  
+  has_event_calendar :start_at_field => 'course_session_start', :end_at_field => 'course_session_end'
   
   attr_accessible :course_session_start, :course_session_end, :course_id, :location_id,  :description
   attr_accessible :course_session_start, :course_session_end, :course_id, :location_id,  :description, :as => :admin

@@ -21,7 +21,7 @@ def reasonable_hours
 end
 
 def compact_readable(cs)
-  cs.course_session_start.strftime("%A, %B %d#{", %Y" if cs.course_session_start.year != Date.today.year} @ %l:%M %p") 
+  cs.course_session_start.strftime("%a, %b %d#{", %Y" if cs.course_session_start.year != Date.today.year} @ %l:%M %p") 
 end
 
 
