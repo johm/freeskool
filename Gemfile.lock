@@ -49,6 +49,8 @@ GEM
     arel (2.2.1)
     bbenezech-nested_form (0.0.3)
     bcrypt-ruby (3.0.1)
+    bootstrap-datepicker-rails (0.6.14)
+      railties (>= 3.0)
     bootstrap-sass (2.0.1)
     builder (3.0.0)
     cancan (1.6.7)
@@ -59,8 +61,13 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carrierwave (0.5.8)
+      activesupport (~> 3.0)
     childprocess (0.3.0)
       ffi (~> 1.0.6)
+    ckeditor (3.7.1)
+      mime-types
+      orm_adapter
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -94,6 +101,7 @@ GEM
     factory_girl_rails (1.5.0)
       factory_girl (~> 2.4.0)
       railties (>= 3.0.0)
+    fastercsv (1.5.4)
     ffi (1.0.11)
     gherkin (2.7.3)
       json (>= 1.4.6)
@@ -123,12 +131,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     multi_json (1.0.4)
     nifty-generators (0.4.6)
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
-    polyamorous (0.5.0)
-      activerecord (~> 3.0)
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.1)
@@ -161,6 +169,7 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (1.0.2)
+    rqrcode (0.4.2)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -193,10 +202,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.5)
-    squeel (0.9.3)
-      activerecord (~> 3.0)
-      activesupport (~> 3.0)
-      polyamorous (~> 0.5.0)
+    subexec (0.2.2)
     term-ansicolor (1.0.7)
     therubyracer (0.9.9)
       libv8 (~> 3.3.10)
@@ -213,6 +219,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.0)
       rack (>= 1.0)
+    wicked_pdf (0.7.9)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -220,24 +227,31 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bbenezech-nested_form
+  bootstrap-datepicker-rails
   cancan
+  carrierwave
+  ckeditor (= 3.7.1)
   coffee-rails (~> 3.1.1)
   cucumber-rails
   devise
   event-calendar
   execjs
   factory_girl_rails
+  fastercsv
   jquery-rails
   json
   less-rails-bootstrap
+  mini_magick
   nifty-generators
   rails (= 3.1.3)
   rails_admin!
+  rqrcode
   rspec-rails
   sanitize
   sass-rails (~> 3.1.5)
   sqlite3
-  squeel
   therubyracer
   tinymce-rails
   uglifier (>= 1.0.3)
+  wicked_pdf
