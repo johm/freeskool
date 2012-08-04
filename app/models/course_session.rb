@@ -1,14 +1,17 @@
 class CourseSession < ActiveRecord::Base
   
-  has_event_calendar :start_at_field => 'course_session_start', :end_at_field => 'course_session_end'
+  #borks rails_admin?
+  #has_event_calendar :start_at_field => 'course_session_start', :end_at_field => 'course_session_end'
   
   attr_accessible :course_session_start, :course_session_end, :course_id, :location_id,  :description
+  attr_accessible :course_session_start, :course_session_end, :course_id, :location_id,  :description, :as => :admin
+  
   clean_up_html [:description]
 
 # scope :on_date, lambda {|d| where(:course_session_date => d)}
   
-  belongs_to :course
-  belongs_to :location
+  belongs_to :course, :inverse_of => :course_sessions
+  belongs_to :location, :inverse_of => :course_sessions
   
   #before_save :set_course_session_date
   
@@ -40,7 +43,7 @@ class CourseSession < ActiveRecord::Base
 
   
   def overlapping_sessions #tk add location
-    CourseSession.find_by_sql ["SELECT * from course_sessions where NOT(? >= course_session_end OR ? <= course_session_start) ", course_session_start,course_session_end] 
+    CourseSession.find_by_sql ["SELECT * from course_sessions where id!=? AND location_id=? AND NOT(? >= course_session_end OR ? <= course_session_start) ", id,location_id,course_session_start,course_session_end] 
   end
 
   def name 

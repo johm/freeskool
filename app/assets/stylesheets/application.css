@@ -14,7 +14,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,100,300,100italic,300italic,400italic,900italic,900,700italic,700);
 
 body {
-background-image:url('/assets/freeschool-mural-lq.jpg');
+background-image:url('/assets/freeschool-mural-lq-blur.jpg');
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -24,8 +24,20 @@ font-family:Lato;
 
 .hero-unit {
 background-color:rgba(255,255,255,0.9) !important;
+}
+
+#content {
+background-color:#ffffff;
+background-color:rgba(255,255,255,0.9);
+border-radius: 6px 6px 6px 6px;
 
 }
+
+#content .inner {
+padding:20px;
+}
+
+
 
 @font-face {
     font-family: 'TSCBFSSlabRegular';
@@ -129,4 +141,27 @@ font-family:Lato;
 font-weight:500;
 font-size:18px;
 margin-top:14px !important;
+}
+
+
+
+.small_course_sessions ul { 
+margin-left:0px;
+list-style:none;
+font-size:10px;
+}
+.small_course_sessions li { 
+line-height:14px;
+}
+
+.small_course_sessions {
+font-size:10px;
+float:right;
+margin-top:5px;
+line-height:14px;
+}
+
+
+li.course {
+margin-bottom:14px;
 }

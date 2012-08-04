@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
+  def name 
+    email # for now!
+  end
 
   private
   def default_role  # everyone is a teacher!

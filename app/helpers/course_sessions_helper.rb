@@ -20,5 +20,9 @@ def reasonable_hours
    ["10 PM","22"]]
 end
 
+def compact_readable(cs)
+  cs.course_session_start.strftime("%A, %B %d#{", %Y" if cs.course_session_start.year != Date.today.year} @ %l:%M %p") 
+end
+
 
 end

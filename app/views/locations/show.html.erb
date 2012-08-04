@@ -1,15 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="span8" id="content">
+  <div class="inner">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<h1>
   <%= @location.name %>
-</p>
+</h1>
 
 <p>
-  <b>Description:</b>
-  <%= @location.description %>
+  <%= raw @location.description %>
 </p>
+<br /><br />
+<% unless @location.address.nil? %>
+<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=&amp;daddr=<%= CGI.escape @location.address %>&amp;ie=UTF8&amp;t=m&amp;spn=0.015785,0.019964&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?saddr=&amp;daddr=<%= CGI.escape @location.address%>&amp;ie=UTF8&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+<% end %>
+  </div>
+</div>
 
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<div class="span4">
+<div class="well">
+<h2>Upcoming courses here</h2>
+    <%= render 'courses/frontpage' %>
+</div>
+</div>

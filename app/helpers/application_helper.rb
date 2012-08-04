@@ -9,6 +9,15 @@ module ApplicationHelper
     user_signed_in? && ! (current_user.signups.where(:course_id=>Course.find(:first)).empty?)
   end
 
+
+
   
+  
+  def parent_layout(layout)
+    @view_flow.set(:layout,output_buffer)
+    self.output_buffer = render(:file => "layouts/#{layout}")
+  end  
+
+
 
 end

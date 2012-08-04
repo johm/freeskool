@@ -1,6 +1,15 @@
 <ul>
 <% @courses.each do |course| %>
-  <li>
+  <li class="course">
+    <div class="small_course_sessions">
+      <ul>
+      <% course.course_sessions.each do |cs| %>
+      <li><%= compact_readable(cs) %>
+    <% end %>
+    </ul>
+    (<%= course.course_sessions.find(:first).location.name unless (course.course_sessions.find(:first).nil? || course.course_sessions.find(:first).location.nil?) %>)
+    </div>
+
     <h3>
       <%= link_to course.name, course %>
       <% if is_mine(course) %>
@@ -10,10 +19,10 @@
       <% if taking_this(course) %>
       <span class="label">I'm signed up for this!</span>
       <% end %>
-
     </h3>
+
     <%= raw course.short_description %>
-  </li>
+     </li>
 <% end %>
 
 </ul>

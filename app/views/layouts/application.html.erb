@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Freeskool</title>
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -28,6 +29,23 @@
 	<ul class="hmenu nav">
 	<%= render 'devise/menu/registration_items' %>
 	<%= render 'devise/menu/login_items' %>
+	
+	<li>
+	  <%= link_to "Learn","/courses" %>
+	</li>
+
+	<li>
+	  <%= link_to "Teach","/courses/new" %>
+	</li>
+
+	<li>
+	  <%= link_to "Help","/helpthefreeschool" %>
+	</li>
+
+	<li>
+	  <%= link_to "FAQ","/faq" %>
+	</li>
+
 	<% if !current_user.nil? and current_user.has_role? :instructor %>
 	<li>
 	  <%= link_to "My courses", "/my_courses" %>

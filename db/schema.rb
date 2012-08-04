@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120610130451) do
+ActiveRecord::Schema.define(:version => 20120804151936) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120610130451) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "address"
   end
 
   add_index "course_sessions", ["course_id"], :name => "index_course_sessions_on_course_id"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120610130451) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "address"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

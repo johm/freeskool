@@ -40,7 +40,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = [Course, Location, Role, Session, Signup, User]
 
   # Add models here if you want to go 'whitelist mode':
-  # config.included_models = [Course, Location, Role, Session, Signup, User]
+  config.included_models = [Course, Location,User,CourseSession]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
@@ -84,11 +84,52 @@ RailsAdmin.config do |config|
   # Your model's configuration, to help you get started:
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
+  
+  config.model CourseSession do
+    edit do
+      field :course_session_start, :datetime
+      field :course_session_end, :datetime
+      field :location
+      field :description, :text do 
+        ckeditor true
+      end
+    end
+  end
+  #   create do; end
+  #   update do; end
+  # end
+  
+ config.model Location do
+    edit do
+      field :name 
+      field :description, :text do 
+        ckeditor true
+      end
+      field :address
+    end
+  end
 
-  # config.model Course do
-  #   # Found associations:
+
+  config.model Course do
+    edit do 
+      field :name
+      field :instructor
+      field :short_description, :text  do
+        ckeditor true
+      end
+      field :long_description, :text do 
+        ckeditor true
+      end
+      field :is_approved
+
+      field :course_sessions, :has_many_association do
+        nested_form true
+      end
+    end
+  end
+    #   # Found associations:
   #     configure :instructor, :belongs_to_association 
-  #     configure :sessions, :has_many_association 
+  #     configure :sessions, 
   #     configure :locations, :has_many_association 
   #     configure :signups, :has_many_association 
   #     configure :users, :has_many_association   #   # Found columns:
@@ -106,7 +147,7 @@ RailsAdmin.config do |config|
   #   edit do; end
   #   create do; end
   #   update do; end
-  # end
+#  end
   # config.model Location do
   #   # Found associations:
   #     configure :sessions, :has_many_association 

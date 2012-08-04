@@ -14,7 +14,8 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location = Location.find(params[:id])
-
+    @courses=@location.upcoming_courses
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @location }

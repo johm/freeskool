@@ -8,6 +8,9 @@ gem 'rails', '3.1.3'
 gem 'sqlite3'
 gem 'fastercsv'
 gem 'json'
+gem 'wicked_pdf'
+gem 'rqrcode'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,12 +33,13 @@ group :development, :test do
   gem 'cucumber-rails'
 end
 
-gem 'squeel'
+#gem 'squeel'
 gem 'cancan'
 
 gem 'event-calendar', :require => 'event_calendar'
 
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'bbenezech-nested_form'
 
 # Use unicorn as the web server
 # gem 'unicorn'

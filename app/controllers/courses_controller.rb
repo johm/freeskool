@@ -31,10 +31,17 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-
+    @qr = RQRCode::QRCode.new( "http://freeschool.redemmas.org/courses/#{@course.id}", :size => 5, :level => :h )
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @course }
+      format.pdf do
+        render :pdf => "freeschool_course_poster.pdf",
+               :template => 'courses/show.pdf.erb',
+#        :disposition  => 'attachment',
+        :page_size => 'Letter',
+        :layout => false
+      end
     end
   end
 
