@@ -28,7 +28,7 @@ module CalendarHelper
       else
         stuff=%(<p><a href="/courses/#{event.course.id}" title="#{h(event.course.name)}">#{h(event.course.name)}</a></p>)
       end
-      stuff=stuff+%(<small>#{h(event.location.name)}</small><br /><small>#{h(event.course_session_start.strftime("%l:%M%p"))}-#{h(event.course_session_end.strftime("%l:%M%p"))}</small>)
+      stuff=stuff+%(<small>#{h(event.location.name) unless event.location.nil?}</small><br /><small>#{h(event.course_session_start.strftime("%l:%M%p"))}-#{h(event.course_session_end.strftime("%l:%M%p"))}</small>)
       stuff
       end
   end
