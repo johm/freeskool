@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     @showmine = true if params[:mine]
     if @showmine
       @courses = Course.where(:user_id=>current_user) + current_user.registered_courses
-    elsif !current_user.nil? &&  current_user.has_role? :admin
+    elsif !current_user.nil? && (current_user.has_role? :admin)
       @courses.all
     else
       @courses=Course.upcoming.approved.ispublic.uniq
