@@ -3,7 +3,7 @@
 
 namespace :site_migration do 
   task :read => :environment do 
-    FasterCSV.foreach("data.csv", :quote_char => '"', :col_sep =>',', :row_sep =>:auto, :headers => true) do |row|
+    CSV.foreach("data.csv", :quote_char => '"', :col_sep =>',', :row_sep =>:auto, :headers => true) do |row|
       c=Course.new(
                    :name => row[4],
                    :short_description => row[2],
