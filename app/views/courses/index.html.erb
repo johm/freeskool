@@ -3,7 +3,7 @@
 <h1>
 <% if @showmine %>
 My 
-<% elsif current_user.has_role? :admin %>
+<% elsif !current_user.nil? && (current_user.has_role? :admin) %>
 All
 <% else %>
 Upcoming
@@ -19,7 +19,7 @@ Courses
       <%= link_to course.name, course_path(course) %>
       <%  if course.is_approved && @showmine %>
       <span class='label label-success'>Approved!</span>
-      <% elsif (!course.is_approved && (@showmine || (current_user.has_role? :admin))) %>
+      <% elsif (!course.is_approved && (@showmine || ( !current_user.nil? && (current_user.has_role? :admin)))) %>
       <span class='label label-warning'>Under review</span>
       <% end  %>
       
