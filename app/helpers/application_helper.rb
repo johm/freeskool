@@ -10,7 +10,7 @@ module ApplicationHelper
 
 
   def get_page_content(slug)
-    page=Page.find.where({:slug=>slug}).first
+    page=Page.where({:slug=>slug}).first
     unless page.nil?
       page.content
     end
