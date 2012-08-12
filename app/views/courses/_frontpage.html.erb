@@ -3,8 +3,20 @@
   <li class="course">
     <div class="small_course_sessions">
       <ul>
-      <% course.course_sessions.each do |cs| %>
-      <li><%= compact_readable(cs) %>
+	<% i=0 %>
+	<% course.course_sessions.each do |cs| %>
+	<% if !cs.course_session_start<DateTime.now %>
+	   <% if i<=2 %>
+	<li><%= compact_readable(cs) %></li>
+	<% elsif i==2 %>
+	<% remaining=course.course_sessions.where('course_session_start>?',DateTime.now).size-3 %>
+	   and 
+	   <%= remaining %>
+	   more 
+	   session<%= 's' if remaining>1%>
+	<% end %>
+	<% i=i+1 %>
+	<% end %>
     <% end %>
     </ul>
     (<%= course.course_sessions.find(:first).location.name unless (course.course_sessions.find(:first).nil? || course.course_sessions.find(:first).location.nil?) %>)
