@@ -1,5 +1,5 @@
 
-<div class="span8" id="content">
+<div class="span6" id="content">
   <div class="inner">
   <p id="notice"><%= notice %></p>
   <h1>
@@ -40,13 +40,23 @@
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4ea9ff0b562620d0"></script>
 <!-- AddThis Button END -->
+</div>
+  <div class="inner">
+<% if is_mine(@course) || (! (current_user.nil?) && (current_user.has_role? :admin)) %>
+<h2>People signed up for this course</h2>
+<ul>
+<% @course.signups.each do |signup| %>
+<li><%= signup.user.name %></li>
+<% end %>
+</ul>
+<% end %>
 
   </div>
 </div>
 
 
 
-<div class="span4">
+<div class="span6">
 <div class="well">
 <h2>Course sessions</h2>
 <ul id="course_sessions">
@@ -56,12 +66,6 @@
 </ul>
 <% if is_mine(@course) || (! (current_user.nil?) && (current_user.has_role? :admin)) %>
 <%= link_to 'Add a session to this course', new_course_course_session_path(@course), :remote=>true %> 
-<h2>People signed up for this course</h2>
-<ul>
-<% @course.signups.each do |signup| %>
-<li><%= signup.user.name %></li>
-<% end %>
-</ul>
 <% end %>
 </div>
 </div>
