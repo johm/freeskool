@@ -1,11 +1,11 @@
-<ul>
+<ul style="clear:right;">
 <% @courses.each do |course| %>
   <li class="course">
     <div class="small_course_sessions">
       <ul>
 	<% i=0 %>
 	<% course.course_sessions.each do |cs| %>
-	<% if !cs.course_session_start<DateTime.now %>
+	<% if ! (cs.course_session_start < DateTime.now) %>
 	   <% if i<=2 %>
 	<li><%= compact_readable(cs) %></li>
 	<% elsif i==2 %>
