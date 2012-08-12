@@ -123,7 +123,7 @@ RailsAdmin.config do |config|
   config.model Course do
     edit do 
       field :name
-      field :instructor_id
+      field :user_id
       field :short_description, :text  do
         ckeditor true
       end
