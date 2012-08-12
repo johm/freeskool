@@ -123,12 +123,7 @@ RailsAdmin.config do |config|
   config.model Course do
     edit do 
       field :name
-      field :instructor do 
-        pretty_value do
-          user = User.find(bindings[:object].instructor_id.to_s)
-          user.name 
-        end
-      end
+      field :instructor 
       field :short_description, :text  do
         ckeditor true
       end
