@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   def name 
     email # for now!
   end
+  
+  def to_s
+    email
+  end
 
   private
   def default_role  # everyone is a teacher!
