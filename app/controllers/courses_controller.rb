@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   load_and_authorize_resource
 
   rescue_from CanCan::AccessDenied do |exception| 
-    redirect_to '/users/sign_in', :notice => 'Please log in or create an account'
+    redirect_to '/users/sign_in', :notice => 'Please log in or create an account.  Once you do so, return to this page and you can propose a course you want to teach, or a workshop you would like to run.'
   end
 
 
