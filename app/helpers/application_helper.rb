@@ -9,6 +9,12 @@ module ApplicationHelper
   end
 
 
+  def get_page_content(slug)
+    page=Page.find.where({:slug=>slug}).first
+    unless page.nil?
+      page.content
+    end
+  end
 
   
   
