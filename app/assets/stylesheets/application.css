@@ -108,6 +108,7 @@ h3 {
 
 
 
+
 @font-face {
     font-family: 'Code';
     src: url('/assets/fonts/code_light-webfont.eot');
@@ -143,7 +144,7 @@ font-size:18px;
 /*margin-top:14px !important;*/
 }
 
-#courses li {
+#courses li,.span4 li {
 margin-bottom:12px;
 }
 
