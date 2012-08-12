@@ -8,7 +8,7 @@
 	<% if ! (cs.course_session_start < DateTime.now) %>
 	   <% if i<=2 %>
 	<li><%= compact_readable(cs) %></li>
-	<% elsif i==2 %>
+	<% elsif i==3 %>
 	<% remaining=course.course_sessions.where('course_session_start>?',DateTime.now).size-3 %>
 	   and 
 	   <%= remaining %>
