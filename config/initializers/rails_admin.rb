@@ -119,6 +119,14 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model User do
+    edit do
+      field :email
+      field :roles, :has_and_belongs_to_many_association 
+      field :signups, :has_many_association 
+      field :courses, :has_many_association 
+    end
+  end
 
   config.model Course do
     edit do 
@@ -226,7 +234,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model User do
+#   config.model User do
   #   # Found associations:
   #     configure :roles, :has_and_belongs_to_many_association 
   #     configure :signups, :has_many_association 
