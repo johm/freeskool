@@ -40,7 +40,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = [Course, Location, Role, Session, Signup, User]
 
   # Add models here if you want to go 'whitelist mode':
-  config.included_models = [Course, Location,User,Page,CourseSession]
+  config.included_models = [Course, Location,User,Page,CourseSession, Signup]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
@@ -85,14 +85,22 @@ RailsAdmin.config do |config|
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
   
+  config.model Signup do
+    edit do 
+      field :course
+      field :user
+    end
+  end
+
   config.model CourseSession do
     edit do
       field :course_session_start, :datetime
       field :course_session_end, :datetime
-      field :location
+      field :location 
       field :description, :text do 
         ckeditor true
       end
+      field :course
     end
   end
   #   create do; end
@@ -131,6 +139,7 @@ RailsAdmin.config do |config|
   config.model Course do
     edit do 
       field :name
+      field :instructor
       field :short_description, :text  do
         ckeditor true
       end
