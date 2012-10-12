@@ -206,4 +206,6 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  ActionMailer::Base.default_url_options = { :host => "freeschool.redemmas.org" }
 end

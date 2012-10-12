@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # RailsAdmin config file. Generated on February 17, 2012 14:56
 # See github.com/sferik/rails_admin for more informations
 
@@ -139,7 +140,11 @@ RailsAdmin.config do |config|
   config.model Course do
     edit do 
       field :name
-      field :instructor
+      field :instructor  do 
+        nested_form false        
+      end
+
+#      field :instructor, :belongs_to_association 
       field :short_description, :text  do
         ckeditor true
       end

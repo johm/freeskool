@@ -16,7 +16,7 @@ class Course < ActiveRecord::Base
 
   editable_attributes = [:name,:short_description,:long_description,:course_sessions_attributes]
   attr_accessible *editable_attributes
-  attr_accessible :name,:short_description,:long_description,:is_approved,:course_sessions_attributes,:user_id,:is_private,:instructor,:location_id, :as=>:admin
+  attr_accessible :name,:short_description,:long_description,:is_approved,:course_sessions_attributes,:user_id,:is_private,:instructor_id,:location_id, :as=>:admin
 
   clean_up_html [:short_description,:long_description]
 
