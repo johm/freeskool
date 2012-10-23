@@ -151,6 +151,9 @@ RailsAdmin.config do |config|
       field :long_description, :text do 
         ckeditor true
       end
+      field :print_description, :text do 
+        ckeditor true
+      end
       field :is_approved
       field :is_private
 

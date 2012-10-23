@@ -16,14 +16,17 @@ class Course < ActiveRecord::Base
 
   editable_attributes = [:name,:short_description,:long_description,:course_sessions_attributes]
   attr_accessible *editable_attributes
-  attr_accessible :name,:short_description,:long_description,:is_approved,:course_sessions_attributes,:user_id,:is_private,:instructor_id,:location_id, :as=>:admin
+  attr_accessible :name,:short_description,:long_description,:print_description,:is_approved,:course_sessions_attributes,:user_id,:is_private,:instructor_id,:location_id, :as=>:admin
 
-  clean_up_html [:short_description,:long_description]
+  clean_up_html [:short_description,:long_description,:print_description]
 
   
   def has_upcoming_session?
     ! (course_sessions.where("course_session_start > ?",DateTime.now).empty?)
   end
 
+  def description_for_calendar
+    print_description.blank? ? short_description : print_description
+  end
 
 end

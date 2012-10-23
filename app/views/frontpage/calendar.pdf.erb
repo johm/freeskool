@@ -1,0 +1,149 @@
+<html>
+<head>
+<style type="text/css">
+
+body {
+font-family:Lato;
+}
+
+
+h1 {
+text-transform:uppercase;
+font-size:120pt;
+font-family:'Futura';
+margin-top:-30px;
+font-weight:normal;
+text-align:center;
+font-style:italic;
+}
+
+#courses{
+margin-top:-60pt;
+}
+
+#footer {
+font-family:'Futura';
+position:fixed
+bottom:0px;
+height:150pt;
+border-top:2px solid black;
+font-size:25pt;
+text-align:center;
+}
+ 
+
+.page { display: inline-block; clear: both; width: 1800px; height: 2100px; page-break-after: auto; }
+
+.div {display:block}
+
+.course_inner {
+padding-left:30pt;
+}
+.small_course_sessions ul {
+margin-left:0pt;
+padding-left:0pt;
+
+}
+
+.small_course_sessions li {
+display:inline-block; 
+font-size:15pt;
+font-family:'Futura';
+font-weight:normal;
+font-style:italic;
+margin-right:14pt;
+}
+
+
+
+#footertext {
+font-size:20pt;
+font-family:'Futura';
+font-weight:normal;
+text-align:justify;
+}
+
+
+
+
+.course_title {
+font-size:30pt;
+font-family:'Futura';
+font-weight:normal;
+}
+
+.course_description {
+font-size:14pt;
+font-family:'Futura';
+font-weight:normal;
+padding-right:50pt;
+text-align:justify;
+}
+
+
+
+.course_location {
+font-size:18pt;
+font-family:'Futura';
+font-weight:bold;
+display:inline-block;
+}
+
+
+
+
+</style>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+  
+  <div class="page">
+    <div style="text-align:center;position:relative;left:-30px;">
+      <%= wicked_pdf_image_tag 'bfs-logo-print.jpg', :width=>"1750px" %>
+    </div>
+    <h1 style="width:1780px;">Upcoming Courses</h1>
+    
+    <div id="courses">
+      <% @courses.each_with_index do |course,j| %>
+      <div class="course" style="float:left;width:32%;<%= "margin-right:2%;margin-right:2%"if (j % 3)==1 %> ">
+	<h2 class="course_title"><%= course.name %></h2>
+	<div class="course_inner">
+	  <div class="course_metadata">
+	<div class="small_course_sessions">
+	  <div class="course_location"> <%= course.course_sessions.find(:first).location.name unless (course.course_sessions.find(:first).nil? || course.course_sessions.find(:first).location.nil?) %>
+	  </div>
+	  <ul>
+	    <% course.course_sessions.each do |cs| %>
+	    <% if ! (cs.course_session_start < DateTime.now) %>
+		  <li><%= compact_readable(cs) %></li>
+              <% end %>
+	    <% end %>
+	  </ul>
+    </div>
+</div>
+	<div class="course_description">
+    <%= raw course.description_for_calendar %>
+    </div>
+   </div>
+</div>
+  <% if (j % 3) == 2 %> 
+  <br style="clear:both;">
+  <% end %>
+<% end %>
+
+</div>
+
+
+
+<div id="footer">
+<div style="font-size:35pt;">Sign up to take a course or propose your own at:<br/><b>freeschool.redemmas.org</b></div>
+<div id="footertext">
+The Baltimore Free School is a grassroots, volunteer-run and community-funded project, based at 512-516 W. Franklin St. Building upon a long tradition of horizontal organizing, collaborative learning and participatory education, we believe that the empowerment of people of all ages and backgrounds to share and learn is vital to the health of any community. To that end, we work toward creating a space where the exchange of ideas can occur without the exchange of money; a space where we can learn to relate to each other in new and meaningful ways. By building this infrastructure, we hope to form a microcosm of the world in which we want to live. 
+</div>
+
+</div>
+
+
+</body>
+</html>

@@ -14,6 +14,8 @@ Freeskool::Application.routes.draw do
 
   match '/my_courses' => 'courses#index', :mine => "yes"
 
+  match '/printable_calendar.pdf' => 'frontpage#index', :format => "pdf"
+
   resources :course_sessions
 
   resources :locations
