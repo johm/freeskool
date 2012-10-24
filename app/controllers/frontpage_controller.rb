@@ -7,7 +7,7 @@ class FrontpageController < ApplicationController
       format.pdf do
         render :pdf => "freeschool_calendar.pdf",
         :template => 'frontpage/calendar.pdf.erb',
-        :page_size => 'Letter',
+        :page_size => 'Legal',
         :layout => false,
         :orientation      => 'Portrait', # default , Landscape
         :dpi              => '300',
