@@ -55,6 +55,11 @@
 	  <%= link_to "FAQ","/static/faq" %>
 	</li>
 
+	<li>
+	  <%= link_to "Contact","/static/contact" %>
+	</li>
+
+
 	<% if !current_user.nil? and current_user.has_role? :instructor %>
 	<li>
 	  <%= link_to "My courses", "/my_courses" %>
