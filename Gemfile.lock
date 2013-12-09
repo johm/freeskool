@@ -103,6 +103,9 @@ GEM
       railties (>= 3.0.0)
     fastercsv (1.5.4)
     ffi (1.0.11)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     gherkin (2.7.3)
       json (>= 1.4.6)
     haml (3.1.4)
@@ -239,6 +242,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   fastercsv
+  figaro
   jquery-rails
   json
   less-rails-bootstrap

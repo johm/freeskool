@@ -71,4 +71,4 @@ gem "mini_magick"
 
 gem 'bootstrap-datepicker-rails'
 
-gem "dotenv"
+gem "figaro"
