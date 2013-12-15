@@ -25,6 +25,8 @@ Freeskool::Application.routes.draw do
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   match 'static/:a_slug' => 'pages#show'
+
+  match 'course_calendar' => 'courses#calendar'
   
 
   # The priority is based upon order of creation:

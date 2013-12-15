@@ -72,3 +72,4 @@ gem "mini_magick"
 gem 'bootstrap-datepicker-rails'
 
 gem "figaro"
+gem "ri_cal"

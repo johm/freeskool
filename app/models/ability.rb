@@ -17,6 +17,7 @@ class Ability
       can :read, Page
     else
       can :read, Page
+      can :calendar, Course
       can :read, Course, :is_approved=>true,:is_private=>false
       can :read, CourseSession, :course => {:is_approved => true,:is_private=>false }
     end

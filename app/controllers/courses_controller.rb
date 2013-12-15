@@ -106,4 +106,13 @@ class CoursesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def calendar 
+    cal=MyCalendar.new(Course.upcoming)
+    respond_to do |format|
+      format.ics { render :text => cal.to_export }
+    end
+  end
+
+
 end
