@@ -110,7 +110,7 @@ class CoursesController < ApplicationController
   def calendar 
     cal=MyCalendar.new(Course.upcoming)
     respond_to do |format|
-      format.ics { render :text => cal.to_export }
+      format.ics { render :text => cal.export }
     end
   end
 
