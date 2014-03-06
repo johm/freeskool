@@ -5,8 +5,8 @@ class MyCalendar
       events.each do |e|
         e.course_sessions.each do |s|
           event do
-            dtstart       s.course_session_start + 5.hours - (s.course_session_start.dst? ? 1.hour : 0.hours)
-            dtend         s.course_session_end + 5.hours - (s.course_session_start.dst? ? 1.hour : 0.hours)
+            dtstart       s.course_session_start + 5.hours - (s.course_session_start.dst? ? 0.hours : 1.hours)
+            dtend         s.course_session_end + 5.hours - (s.course_session_start.dst? ? 0.hours : 1.hours)
             summary     "Freeschool: #{e.name}"
             description "From Freeschool"
           end
