@@ -36,29 +36,29 @@ class Course < ActiveRecord::Base
 From: The Baltimore Free School Bot <noreply@redemmas.org>
 To: Freeschool Organizers <freeschool-organize@redemmas.org>
 Reply-To: Freeschool Organizers <freeschool-organize@redemmas.org>
-Subject: Course proposal: #{@course.name.gsub(/[^[:upper:][:lower:][:digit:][:blank:]]/,'')} 
-Message-Id: <#{@course.id}@redemmas.org>
+Subject: Course proposal: #{name.gsub(/[^[:upper:][:lower:][:digit:][:blank:]]/,'')} 
+Message-Id: <#{id}@redemmas.org>
 
 
 COURSE NAME
 -----------
-#{@course.name}
+#{name}
 
 URL
 ---
-http://freeschool.redemmas.org/courses/#{@course.id}
+http://freeschool.redemmas.org/courses/#{id}
 
 SHORT DESCRIPTION
 -----------------
-#{@course.short_description}
+#{short_description}
 
 LONG DESCRIPTION
 ----------------
-#{@course.long_description}
+#{long_description}
 
 PROPOSED BY
 -----------
-#{@course.instructor.email}
+#{instructor.email}
 
 
 END_OF_MESSAGE
