@@ -73,8 +73,8 @@ class CoursesController < ApplicationController
         
         begin
           @course.send_a_mail()
-        rescue
-          #do nothing
+        rescue  Exception => e  
+          puts e.message   
         end
         
         format.html { redirect_to @course, :notice => 'Course was successfully submitted.  <div class="nowdothis">Now indicate which sessions you would like to reserve at the Free School by adding them on the right</div>'.html_safe }
