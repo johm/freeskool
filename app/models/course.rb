@@ -29,4 +29,45 @@ class Course < ActiveRecord::Base
     print_description.blank? ? short_description : print_description
   end
 
+  
+  def send_a_mail
+    require 'net/smtp'
+    msgstr = <<END_OF_MESSAGE
+From: The Baltimore Free School Bot <noreply@redemmas.org>
+To: Freeschool Organizers <freeschool-organize@redemmas.org>
+Reply-To: Freeschool Organizers <freeschool-organize@redemmas.org>
+Subject: Course proposal: #{@course.name.gsub(/[^[:upper:][:lower:][:digit:][:blank:]]/,'')} 
+Message-Id: <#{@course.id}@redemmas.org>
+
+
+COURSE NAME
+-----------
+#{@course.name}
+
+URL
+---
+http://freeschool.redemmas.org/courses/#{@course.id}
+
+SHORT DESCRIPTION
+-----------------
+#{@course.short_description}
+
+LONG DESCRIPTION
+----------------
+#{@course.long_description}
+
+PROPOSED BY
+-----------
+#{@course.instructor.email}
+
+
+END_OF_MESSAGE
+    
+    Net::SMTP.start('127.0.0.1', 25) do |smtp|
+      smtp.send_message msgstr,
+      'noreply@redemmas.org',
+      'freeschool-organize@redemmas.org'
+    end    
+    
+  end
 end
