@@ -9,7 +9,7 @@
     <%= course_session.course_session_start.strftime("%l:%M%p") %>
     -
     <%= course_session.course_session_end.strftime("%l:%M%p") %>
-    (<%= course_session.location.name %>)
+    (<%= course_session.location.name rescue "" %>)
   </h5>
   <div class="small">
     <%= raw course_session.description %>
