@@ -53,7 +53,7 @@
   <br />
   <div class="field">
     <%= f.label :location,"Location of this session?" %><br />
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <%= f.collection_select :location_id, Location.where("name = 'North Ave classroom' or name = 'Off site').order('name'), :id, :name %>
 
   </div>
   <div class="actions">
